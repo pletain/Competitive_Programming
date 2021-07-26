@@ -2,10 +2,22 @@
 #include<cmath>
 using namespace std;
 
+struct Point{
+	int x, y;
+};
+
 int n;
 float w[16][16];
-float xy[2][16];
+Point xy[16];
 int memo[16][1 << 16];
+
+
+
+double Distance(const Point& p1, const Point& p2){
+	double distance;
+	distance = sqrt(pow(p1.x-p2.x,2) + pow(p1.y-p2.y,2));
+	return distance;
+}
 
 int tsp(int pos, int mask){
 	if(mask == ((1 << n) - 1)){
@@ -27,23 +39,22 @@ int tsp(int pos, int mask){
 	return memo[pos][mask] = ans;
 }
 
-int input(){
+void input(){
 	cin >> n;
 	for(int i=0; i<n; i++){
-		cin >> xy[0][i];
-		cin >> xy[1][i];
+		cin >> xy[i].x;
+		cin >> xy[i].y;
 	}
 	
 	for(int i=0; i<n; i++){
 		for(int j=0; j<n; j++){
-			w[i][j] = sqrt((pow(xy[0][i]-xy[0][j]),2)+pow((xy[1][i]-xy[1][j]),2));
+			w[i][j] = Distance(xy[i],xy[j]);
 		}
 	}
 }
 
 int main(){
-
-	
+	input();
 	cout << tsp(0,1) << endl;
 	
 	return 0;
