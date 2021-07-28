@@ -2,8 +2,8 @@
 #include <string>
 using namespace std;
 
-int N, age[10001];
-string name[10001];
+int N, age[10000];
+string name[10000];
 
 void quickSort(int i, int j)
 {
