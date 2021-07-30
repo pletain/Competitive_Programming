@@ -27,7 +27,7 @@ double tsp(int pos, int mask){
 		}
 	return memo[pos][mask] = ans;
 }
-
+ 
 void input(){
 	cin >> n;
 	for(int i=0; i<n; i++){
